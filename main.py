@@ -4,6 +4,8 @@ import random
 from selenium import webdriver
 from selenium.common.exceptions import StaleElementReferenceException
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 sys.path.insert(0, 'W:\\my_project\\categories\\PC_and_Laptops')
 import PC_and_LaptopsCAT
@@ -47,24 +49,24 @@ if __name__ == '__main__':
     run_pc_componentsCAT(browser) # starts subcategory
     time.sleep(1)
     run_CPUs(browser)
-time.sleep(10)# delay
+    time.sleep(1)# delay
 def run_script(browser):
-    browser = webdriver.Chrome()
-    product_elements = browser.find_elements(By.CLASS_NAME, 'goods-tile__title') # list all products on the page
-    retry_attempts = 20
+    product_elements = browser.find_elements(By.CLASS_NAME, 'goods-tile__title')
+    retry_attempts = 3
     for _ in range(retry_attempts):
         try:
-            random_index = random.randint(0, len(product_elements) - 1) # pick random product from the list
-            random_product = product_elements[random_index]
-            browser.execute_script("arguments[0].click();", random_product) # click using JavaScript
+            random_index = random.randint(0, len(product_elements) - 1)  # pick random product from the list
+            random_product = product_elements[random_index]            
+            browser.execute_script("arguments[0].click();", random_product)  # click using JavaScript
             break  # If the click is successful, exit the loop
-        except StaleElementReferenceException: # error that sometimes appears
+        except StaleElementReferenceException:  # error that sometimes appears
             # retry the loop
             continue
-time.sleep(100)
-buy_button = browser.find_element(By.XPATH, '/html/body/app-root/div/div/rz-product/aside/rz-product-carriage/div/div[2]/div/rz-product-buy-btn/app-buy-button/button')
-browser.execute_script("arguments[0].click();", buy_button) # click using JavaScript
-time.sleep(1) # wait until the element appears
-confirm_buy_button = browser.execute_script("return document.querySelector('a[href=\"https://rozetka.com.ua/ua/checkout/\"]')")
-browser.execute_script("arguments[0].click();", confirm_buy_button) # click using JavaScript
+    time.sleep(5)
+    buy_button = browser.find_element(By.XPATH,'/html/body/app-root/div/div/rz-product/div/rz-product-tab-main/div[1]/div[1]/div[2]/rz-product-main-info/div[1]/div[1]/rz-product-buy-btn/app-buy-button/button')
+    #buy_button = WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH, '/html/body/app-root/div/div/rz-product/aside/rz-product-carriage/div/div[2]/div/rz-product-buy-btn/app-buy-button/button')))
+    browser.execute_script("arguments[0].click();", buy_button) # click using JavaScript
+    time.sleep(1) # wait until the element appears
+    confirm_buy_button = browser.execute_script("return document.querySelector('a[href=\"https://rozetka.com.ua/ua/checkout/\"]')")
+    browser.execute_script("arguments[0].click();", confirm_buy_button) # click using JavaScript
 run_script(browser)
