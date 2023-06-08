@@ -1,0 +1,9 @@
+2023-06-08 19:20:49,667 - INFO - Executing CPUs script
+2023-06-08 19:20:49,674 - INFO - Applicable driver not found; attempting to install with Selenium Manager (Beta)
+2023-06-08 19:21:13,309 - INFO - All scripts executed
+2023-06-08 19:21:13,309 - INFO - Executing GPU script
+2023-06-08 19:21:13,315 - INFO - Applicable driver not found; attempting to install with Selenium Manager (Beta)
+2023-06-08 19:21:37,107 - INFO - All scripts executed
+2023-06-08 19:21:37,107 - INFO - Executing Motherboards script
+2023-06-08 19:21:37,113 - INFO - Applicable driver not found; attempting to install with Selenium Manager (Beta)
+2023-06-08 19:22:01,051 - INFO - All scripts executed
