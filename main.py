@@ -1,4 +1,5 @@
 import time
+import logging
 import sys
 import random
 from selenium import webdriver
@@ -6,6 +7,8 @@ from selenium.common.exceptions import StaleElementReferenceException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+
+logging.basicConfig(filename='script.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 sys.path.insert(0, 'W:\\my_project\\categories\\PC_and_Laptops')
 import PC_and_LaptopsCAT
@@ -25,7 +28,7 @@ import RAM
 sys.path.insert(0, 'W:\\my_project\\categories\\PC_and_Laptops\\subcategories\\PC_components')
 import pc_components_CAT
 
-browser = webdriver.Chrome()
+
 
 def run_CPUs(browser):
     CPUs.run(browser)
@@ -42,14 +45,7 @@ def run_pc_and_laptopsCAT(browser):
 def run_pc_componentsCAT(browser):
     pc_components_CAT.run(browser)
 
-if __name__ == '__main__':
-    browser = webdriver.Chrome()
-    run_pc_and_laptopsCAT(browser) # starts category
-    time.sleep(1)
-    run_pc_componentsCAT(browser) # starts subcategory
-    time.sleep(1)
-    run_CPUs(browser)
-    time.sleep(1)# delay
+
 def run_script(browser):
     product_elements = browser.find_elements(By.CLASS_NAME, 'goods-tile__title')
     retry_attempts = 3
@@ -60,7 +56,7 @@ def run_script(browser):
             browser.execute_script("arguments[0].click();", random_product)  # click using JavaScript
             break  # If the click is successful, exit the loop
         except StaleElementReferenceException:  # error that sometimes appears
-            # retry the loop
+        # retry the loop
             continue
     time.sleep(5)
     buy_button = browser.find_element(By.XPATH,'/html/body/app-root/div/div/rz-product/div/rz-product-tab-main/div[1]/div[1]/div[2]/rz-product-main-info/div[1]/div[1]/rz-product-buy-btn/app-buy-button/button')
@@ -69,4 +65,22 @@ def run_script(browser):
     time.sleep(1) # wait until the element appears
     confirm_buy_button = browser.execute_script("return document.querySelector('a[href=\"https://rozetka.com.ua/ua/checkout/\"]')")
     browser.execute_script("arguments[0].click();", confirm_buy_button) # click using JavaScript
-run_script(browser)
+
+if __name__ == '__main__':
+    productType =[
+        ('CPUs', run_CPUs),
+        ('GPU', run_GPU),
+        ('Motherboards', run_Motherboards)
+    ]
+    for productTypes_name, productType_script, in productType:
+        logging.info(f"Executing {productTypes_name} script")
+        browser = webdriver.Chrome()
+        run_pc_and_laptopsCAT(browser) # starts category
+        time.sleep(1)
+        run_pc_componentsCAT(browser) # starts subcategory
+        time.sleep(1)
+        productType_script(browser)
+        time.sleep(1)# delay
+        run_script(browser)
+        browser.quit()
+        logging.info("All scripts executed")
