@@ -8,7 +8,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-logging.basicConfig(filename='script.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(filename='script.log',filemode='w', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 sys.path.insert(0, 'W:\\my_project\\categories\\PC_and_Laptops')
 import PC_and_LaptopsCAT
@@ -28,7 +28,32 @@ import RAM
 sys.path.insert(0, 'W:\\my_project\\categories\\PC_and_Laptops\\subcategories\\PC_components')
 import pc_components_CAT
 
+sys.path.insert(0, 'W:\\my_project\\categories\\PC_and_Laptops\\subcategories\\PC_components')
+import Coollers
 
+sys.path.insert(0, 'W:\\my_project\\categories\\PC_and_Laptops\\subcategories\\PC_components')
+import PSUs
+
+sys.path.insert(0, 'W:\\my_project\\categories\\PC_and_Laptops\\subcategories\\PC_components')
+import SSDs
+
+sys.path.insert(0, 'W:\\my_project\\categories\\PC_and_Laptops\\subcategories\\PC_components')
+import Cases
+
+def run_Cases(browser):
+    Cases.run(browser)
+
+def run_SSDs(browser):
+    SSDs.run(browser)
+
+def run_PSUs(browser):
+    PSUs.run(browser)
+
+def run_Coollers(browser):
+    Coollers.run(browser)
+
+def run_RAM(browser):
+    RAM.run(browser)
 
 def run_CPUs(browser):
     CPUs.run(browser)
@@ -68,6 +93,11 @@ def run_script(browser):
 
 if __name__ == '__main__':
     productType =[
+        ('Cases', run_Cases),
+        ('SSDs', run_SSDs),
+        ('PSUs', run_PSUs),
+        ('Coollers', run_Coollers),
+        ('RAM', run_RAM),
         ('CPUs', run_CPUs),
         ('GPU', run_GPU),
         ('Motherboards', run_Motherboards)
@@ -82,5 +112,6 @@ if __name__ == '__main__':
         productType_script(browser)
         time.sleep(1)# delay
         run_script(browser)
+        time.sleep(3)
         browser.quit()
         logging.info("All scripts executed")

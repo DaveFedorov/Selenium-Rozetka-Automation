@@ -1,9 +1,24 @@
-2023-06-08 19:20:49,667 - INFO - Executing CPUs script
-2023-06-08 19:20:49,674 - INFO - Applicable driver not found; attempting to install with Selenium Manager (Beta)
-2023-06-08 19:21:13,309 - INFO - All scripts executed
-2023-06-08 19:21:13,309 - INFO - Executing GPU script
-2023-06-08 19:21:13,315 - INFO - Applicable driver not found; attempting to install with Selenium Manager (Beta)
-2023-06-08 19:21:37,107 - INFO - All scripts executed
-2023-06-08 19:21:37,107 - INFO - Executing Motherboards script
-2023-06-08 19:21:37,113 - INFO - Applicable driver not found; attempting to install with Selenium Manager (Beta)
-2023-06-08 19:22:01,051 - INFO - All scripts executed
+2023-06-09 20:10:41,098 - INFO - Executing Cases script
+2023-06-09 20:10:41,107 - INFO - Applicable driver not found; attempting to install with Selenium Manager (Beta)
+2023-06-09 20:11:04,632 - INFO - All scripts executed
+2023-06-09 20:11:04,632 - INFO - Executing SSDs script
+2023-06-09 20:11:04,638 - INFO - Applicable driver not found; attempting to install with Selenium Manager (Beta)
+2023-06-09 20:11:31,658 - INFO - All scripts executed
+2023-06-09 20:11:31,658 - INFO - Executing PSUs script
+2023-06-09 20:11:31,665 - INFO - Applicable driver not found; attempting to install with Selenium Manager (Beta)
+2023-06-09 20:12:00,194 - INFO - All scripts executed
+2023-06-09 20:12:00,194 - INFO - Executing Coollers script
+2023-06-09 20:12:00,201 - INFO - Applicable driver not found; attempting to install with Selenium Manager (Beta)
+2023-06-09 20:12:27,637 - INFO - All scripts executed
+2023-06-09 20:12:27,637 - INFO - Executing RAM script
+2023-06-09 20:12:27,644 - INFO - Applicable driver not found; attempting to install with Selenium Manager (Beta)
+2023-06-09 20:12:55,039 - INFO - All scripts executed
+2023-06-09 20:12:55,039 - INFO - Executing CPUs script
+2023-06-09 20:12:55,045 - INFO - Applicable driver not found; attempting to install with Selenium Manager (Beta)
+2023-06-09 20:13:22,955 - INFO - All scripts executed
+2023-06-09 20:13:22,955 - INFO - Executing GPU script
+2023-06-09 20:13:22,961 - INFO - Applicable driver not found; attempting to install with Selenium Manager (Beta)
+2023-06-09 20:13:50,392 - INFO - All scripts executed
+2023-06-09 20:13:50,392 - INFO - Executing Motherboards script
+2023-06-09 20:13:50,398 - INFO - Applicable driver not found; attempting to install with Selenium Manager (Beta)
+2023-06-09 20:14:18,118 - INFO - All scripts executed
