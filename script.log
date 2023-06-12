@@ -1,9 +1,0 @@
-2023-06-11 15:39:40,528 - INFO - Executing Cases script
-2023-06-11 15:39:40,528 - INFO - Executing SSDs script
-2023-06-11 15:39:40,528 - INFO - Executing PSUs script
-2023-06-11 15:39:40,528 - INFO - Executing Coollers script
-2023-06-11 15:39:40,528 - INFO - Executing RAM script
-2023-06-11 15:39:40,528 - INFO - Executing CPUs script
-2023-06-11 15:39:40,529 - INFO - Executing GPU script
-2023-06-11 15:39:40,529 - INFO - Executing Motherboards script
-2023-06-11 15:39:40,529 - INFO - All scripts executed
