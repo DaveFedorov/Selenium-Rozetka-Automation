@@ -65,24 +65,32 @@ def process_product_type(product_type):
         pc_components_CAT.run(browser)
     
     def run_script(browser):
-        product_elements = browser.find_elements(By.CLASS_NAME, 'goods-tile__title')
+        wait = WebDriverWait(browser, 10)  # Wait for up to 10 seconds
+        product_elements = wait.until(EC.presence_of_all_elements_located((By.CLASS_NAME, 'buy-button')))  # Wait for the elements to be present
+        product_elements = browser.find_elements(By.CLASS_NAME, 'buy-button')  #list of products
         retry_attempts = 3
-        for _ in range(retry_attempts):
-            try:
-                random_index = random.randint(0, len(product_elements) - 1)  # pick random product from the list
-                random_product = product_elements[random_index]            
-                browser.execute_script("arguments[0].click();", random_product)  # click using JavaScript
-                break  # If the click is successful, exit the loop
-            except StaleElementReferenceException:  # error that sometimes appears
-                # retry the loop
-                continue
+        repeat_times = random.randint(1, 5)
+        for _ in range(repeat_times):
+            for _ in range(retry_attempts):
+                try:
+                    random_index = random.randint(0, len(product_elements) - 1)  # pick random product from the list
+                    random_product = product_elements[random_index]            
+                    browser.execute_script("arguments[0].click();", random_product)  # click using JavaScript
+                    break  # If the click is successful, exit the loop
+                
+                except StaleElementReferenceException:  # error that sometimes appears
+                    
+                    # retry the loop
+                    
+                    continue
+            continue
         time.sleep(5)
-        buy_button = browser.find_element(By.XPATH,'/html/body/app-root/div/div/rz-product/div/rz-product-tab-main/div[1]/div[1]/div[2]/rz-product-main-info/div[1]/div[1]/rz-product-buy-btn/app-buy-button/button')
+        buy_button = browser.find_element(By.XPATH,'/html/body/app-root/div/div/rz-header/rz-main-header/header/div/div/ul/li[7]/rz-cart/button')
         browser.execute_script("arguments[0].click();", buy_button) # click using JavaScript
-        time.sleep(1) # wait until the element appears
+        time.sleep(2) # wait until the element appears
         confirm_buy_button = browser.execute_script("return document.querySelector('a[href=\"https://rozetka.com.ua/ua/checkout/\"]')")
         browser.execute_script("arguments[0].click();", confirm_buy_button) # click using JavaScript
-
+    
     browser = webdriver.Chrome()
     sys.path.insert(0, 'W:\\my_project\\categories\\PC_and_Laptops')
     import PC_and_LaptopsCAT
@@ -91,7 +99,7 @@ def process_product_type(product_type):
     import pc_components_CAT
 
     run_pc_and_laptopsCAT(browser)  # starts category
-    wait = WebDriverWait(browser, 10)
+    wait = WebDriverWait(browser,5)
     element = wait.until(EC.visibility_of_element_located((By.XPATH, '/html/body/app-root/div/div/rz-super-portal/div/main/section/div[2]/rz-dynamic-widgets/rz-widget-list[2]/section/ul/li[1]/rz-list-tile/div/a[2]')))
     run_pc_componentsCAT(browser)  # starts subcategory
     time.sleep(5)
@@ -120,6 +128,7 @@ if __name__ == '__main__':
     logging.basicConfig(filename='script.log', filemode='w', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
     pool = multiprocessing.Pool()
     product_types = ['Cases', 'SSDs', 'PSUs', 'Coollers', 'RAM', 'CPUs', 'GPU', 'Motherboards']
+    browser = webdriver.Chrome()
     pool.map(process_product_type, product_types)
     pool.close()
     pool.join()
