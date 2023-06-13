@@ -1,0 +1,10 @@
+2023-06-13 12:39:08,701 - INFO - Applicable driver not found; attempting to install with Selenium Manager (Beta)
+2023-06-13 12:40:09,042 - INFO - Executing Cases script
+2023-06-13 12:40:09,042 - INFO - Executing SSDs script
+2023-06-13 12:40:09,042 - INFO - Executing PSUs script
+2023-06-13 12:40:09,042 - INFO - Executing Coollers script
+2023-06-13 12:40:09,042 - INFO - Executing RAM script
+2023-06-13 12:40:09,042 - INFO - Executing CPUs script
+2023-06-13 12:40:09,042 - INFO - Executing GPU script
+2023-06-13 12:40:09,042 - INFO - Executing Motherboards script
+2023-06-13 12:40:09,042 - INFO - All scripts executed
