@@ -30,8 +30,8 @@ def run_pc_componentsCAT(browser):
 
 
 def run_login(browser):
-    your_email = "pepito.mussiloni@gmail.com" #DO NOT FORGET TO PASTE YOUR EMAIL!
-    your_password = "wL23VrdTjZ6UQ7" #DO NOT FORGET TO PASTE YOUR PASSWORD!
+    your_email = "" #DO NOT FORGET TO PASTE YOUR EMAIL!
+    your_password = "" #DO NOT FORGET TO PASTE YOUR PASSWORD!
     sign_in_button = browser.find_element(By.XPATH, "/html/body/app-root/div/div/rz-header/rz-main-header/header/div/div/ul/li[3]")
     sign_in_button.click()
     time.sleep(2)
